@@ -41,7 +41,7 @@ public class MatchController {
         int playerId = (int) jsonData.get("playerId");
         Room newRoom = matchService.createRoom(playerId);
         JSONObject resJson = new JSONObject();
-        if (newRoom != null) {
+        if (newRoom == null) {//房间创建失败
             resJson.put("status", false);
         } else {
             resJson.put("status", true);

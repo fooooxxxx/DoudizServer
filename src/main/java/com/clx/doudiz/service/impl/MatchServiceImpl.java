@@ -35,7 +35,7 @@ public class MatchServiceImpl implements MatchService {
         int newRoomId;
         do{
             newRoomId = random.nextInt(99998)+1;
-        }while(roomMapper.selectRoomById(newRoomId) == null);//如果该roomId没有重复
+        }while(roomMapper.selectRoomById(newRoomId) != null);//如果该roomId没有重复
         Room newRoom = new Room(newRoomId,playerId);
         return roomMapper.insertRoom(newRoom);
     }

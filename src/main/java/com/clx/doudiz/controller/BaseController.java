@@ -25,8 +25,8 @@ public class BaseController {
         String newPlayerName = (String) jsonData.get("playerName");
 
         JSONObject resJson = new JSONObject();
-        resJson.put("succeed",true);
-        resJson.put("playId",playerService.createPlayer(newPlayerName));
+        resJson.put("status",true);
+        resJson.put("playerId",playerService.createPlayer(newPlayerName));
         return resJson.toJSONString();
     }
 
