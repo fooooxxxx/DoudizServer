@@ -15,9 +15,13 @@ public interface RoomMapper {
     List<Room> selectAllRoom();
 
     @Select("SELECT * FROM room WHERE room_id = #{roomId}")
-    Room selectRoomById(Integer roomId);
+    Room selectRoomById(int roomId);
 
-    Room insertRoom(Room newRoom);
+    boolean insertRoom(Room newRoom);
+
+    boolean updateRoom(Room room);
+
+
 
 
 }

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.clx.doudiz.domain.mapper.RoomMapper">
-    <insert id="insertRoom"
-            parameterType="com.clx.doudiz.domain.Room">
-        INSERT INTO room (room_id,player1_id,room_status) VALUES (#{roomId},player1Id,roomStatus);
+    <insert id="insertRoom" parameterType="com.clx.doudiz.domain.Room">
+        INSERT INTO room (room_id,player1_id,room_status) VALUES (#{roomId},#{player1Id},#{roomStatus});
     </insert>
+
+    <update id="updateRoom" parameterType="com.clx.doudiz.domain.Room">
+        UPDATE room
+        <set>
+            player1_id = #{player1Id},
+            player2_id = #{player2Id},
+            player3_id = #{player3Id},
+            <if test="notReadyPlayer !=null">not_ready_player = #{notReadyPlayer},</if>
+            battle_id = #{battleId},
+            <if test="roomStatus !=null">room_status = #{roomStatus}</if>
+        </set>
+        WHERE room_id = #{roomId}
+    </update>
 
 </mapper>

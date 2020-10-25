@@ -1,6 +1,6 @@
 package com.clx.doudiz.domain;
 
-import com.clx.doudiz.domain.enums.RoomStatus;
+import com.clx.doudiz.domain.enums.Status;
 
 public class Room {
     int roomId;
@@ -9,25 +9,40 @@ public class Room {
     int player3Id;
     String notReadyPlayer;
     int battleId;
-    RoomStatus roomStatus;
+    Status roomStatus;
 
+    public Room(){
+        this.roomId = 0;
+        this.roomStatus = Status.UNKNOWN;
+    }
 
     public Room(int roomId,int player1Id){
         this.roomId = roomId;
         this.player1Id = player1Id;
-        this.roomStatus = RoomStatus.NOT_FULL;
+        this.roomStatus = Status.NOT_FULL;
     }
-    public Room(int roomId,int player1Id,RoomStatus roomStatus){
+
+    public Room(int roomId, int player1Id, int player2Id, int player3Id, String notReadyPlayer, int battleId, Status roomStatus) {
+        this.roomId = roomId;
+        this.player1Id = player1Id;
+        this.player2Id = player2Id;
+        this.player3Id = player3Id;
+        this.notReadyPlayer = notReadyPlayer;
+        this.battleId = battleId;
+        this.roomStatus = roomStatus;
+    }
+
+    public Room(int roomId, int player1Id, Status roomStatus){
         this.roomId = roomId;
         this.player1Id = player1Id;
         this.roomStatus = roomStatus;
     }
 
-    public RoomStatus getRoomStatus() {
+    public Status getRoomStatus() {
         return roomStatus;
     }
 
-    public void setRoomStatus(RoomStatus roomStatus) {
+    public void setRoomStatus(Status roomStatus) {
         this.roomStatus = roomStatus;
     }
 

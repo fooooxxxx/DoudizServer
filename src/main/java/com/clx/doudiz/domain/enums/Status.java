@@ -1,6 +1,6 @@
 package com.clx.doudiz.domain.enums;
 
-public enum RoomStatus {
+public enum Status {
     /**未知状态,不允许使用*/
     UNKNOWN(0),
     /**有玩家但是没有满员*/
@@ -12,14 +12,28 @@ public enum RoomStatus {
     /**正在游戏*/
     PLAYING(5),
     /** 房间为空,需要清理 */
-    EMPTY(104);
+    EMPTY(104),
+
+    /*以下状态不允许Dao层使用,网络传输的状态码*/
+
+    /** 进入成功 */
+    ENTER_SUCCEED(200),
+    /** 离开成功 */
+    LEAVE_SUCCEED(202),
+    /**该房间已满*/
+    FULL(401),
+    /**房间或用户或战局不存在*/
+    NOT_EXIST(404),
+    /**未知错误*/
+    UNKNOWN_ERROR(444);
 
 
     private int code;
 
-    RoomStatus(int code) {
+    Status(int code) {
         this.code = code;
     }
+
 
     public void setCode(int code) {
         this.code = code;
@@ -28,4 +42,5 @@ public enum RoomStatus {
     public int getCode() {
         return this.code;
     }
+
 }

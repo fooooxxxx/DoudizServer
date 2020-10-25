@@ -19,8 +19,9 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public int createPlayer(String playName){
-        Player newPlayer = new Player(playName);
-        return playerMapper.insertPlayer(newPlayer);
+    public int createPlayer(String playerName){
+        Player newPlayer = new Player(playerName);
+        playerMapper.insertPlayer(newPlayer);
+        return newPlayer.getPlayerId();
     }
 }
