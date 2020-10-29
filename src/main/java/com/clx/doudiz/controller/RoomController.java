@@ -32,7 +32,6 @@ public class RoomController {
         resJson.put("statusCode", roomStatus.getCode());//将状态码写入json
         if (roomStatus == Status.ENTER_SUCCEED) {//进入成功
             resJson.put("status", true);
-            /*         将room传入resJson            */
         } else {
             resJson.put("status", false);
         }

@@ -109,6 +109,7 @@ public class RoomServiceImpl implements RoomService {
                 * */
                 resStatus = Status.PLAYING;
                 //模式设置为PLAYING
+                roomMapper.updateRoom(room);
                 break;
         }
         return resStatus;

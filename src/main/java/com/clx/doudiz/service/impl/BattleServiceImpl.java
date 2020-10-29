@@ -60,16 +60,20 @@ public class BattleServiceImpl implements BattleService {
                 originCards.add(type+"_"+value);
             }
         }
+        originCards.add(5+"_"+"16");
+        originCards.add(5+"_"+"17");
 
         for(int i = 0;i < 3;i++){//分别为三个人发牌
             StringBuilder cardStr = new StringBuilder();
             for(int j = 0;j < 17;j++){//发17张牌
-                cardStr.append(originCards.remove((int) (Math.random() * originCards.size())));
+                int rand = (int) (Math.random() * originCards.size());
+                cardStr.append(originCards.remove(rand));
                 if(j!=16) cardStr.append(",");//如果不是末尾,则添加逗号进行分割
             }
             handCardList.add(cardStr.toString());
             //添加额外的三张牌
             extraCard.append(originCards.remove(originCards.size()-1));
+            if(i!=2) extraCard.append(",");
         }
 
         showCardList.add("");
@@ -83,6 +87,7 @@ public class BattleServiceImpl implements BattleService {
         newBattle.setPlayerList(playerList);
         newBattle.setPlayerHandCards(handCardList);
         newBattle.setPlayerShowCards(showCardList);
+
         newBattle.setExtraCards(extraCard.toString());
         newBattle.setCountDown(15);//倒计时15秒
         newBattle.setCurrentPlayer(0);//当前由第一位玩家操作

@@ -27,7 +27,9 @@ public class BattleScheduleTask {
     public void autoDealBattle(){
         System.out.println("开始自动处理 : " + LocalDateTime.now().toLocalTime() + "\r\n线程 : " + Thread.currentThread().getName());
         List<Room> roomList =  roomService.getAllRoom();
-
+        for(Room room : roomList){
+            roomService.checkRoomStatus(room.getRoomId());//每秒钟检查room状态
+        }
 
     }
 }
