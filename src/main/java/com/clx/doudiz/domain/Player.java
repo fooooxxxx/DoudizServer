@@ -6,6 +6,17 @@ import java.io.Serializable;
 public class Player implements Serializable {
     private int playerId;
     private String playerName;
+    private int enterRoomId;
+
+    public int getEnterRoomId() {
+        return enterRoomId;
+    }
+
+    public void setEnterRoomId(int enterRoomId) {
+        this.enterRoomId = enterRoomId;
+    }
+
+
 
     public Player(){}
 

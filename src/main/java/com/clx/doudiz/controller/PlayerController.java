@@ -15,12 +15,12 @@ import java.util.List;
  * 基础控制器,用于进行创建用户,以及其他操作
  */
 @RestController
-public class BaseController {
+public class PlayerController {
 
     @Autowired
     private PlayerService playerService;
 
-    @RequestMapping(value = "/create/player",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/player/create",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
     public String createPlayer(@RequestBody JSONObject jsonData){
         String newPlayerName = (String) jsonData.get("playerName");
 

@@ -14,8 +14,9 @@ public enum Status {
     /** 房间为空,需要清理 */
     EMPTY(104),
 
-    /*以下状态不允许Dao层使用,网络传输的状态码*/
+    /*600到800的状态码属于Battle使用,在BattleService中定义*/
 
+    /*以下状态不允许Dao层使用,网络传输的状态码*/
     /** 进入成功 */
     ENTER_SUCCEED(200),
     /** 离开成功 */

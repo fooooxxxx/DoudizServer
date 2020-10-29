@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.clx.doudiz.domain.mapper.BattleMapper">
+
+
+    <insert id="insertBattle" parameterType="com.clx.doudiz.domain.Battle">
+        INSERT INTO battle
+        (battle_id, player_list, player_hand_cards, player_show_cards, count_down, current_player, extra_cards,
+         identity, battle_status)
+        VALUES (#{battleId}, #{playerList}, #{playerHandCards}, #{playerShowCards}, #{countDown}, #{currentPlayer},
+                #{extraCards}, #{identity}, #{battleStatus});
+    </insert>
+
+
+</mapper>

@@ -15,7 +15,7 @@ public interface PlayerMapper {
     @Select("SELECT * FROM player")
     List<Player> getAllPlayer();
 
-
+    @Select("SELECT * FROM player WHERE player_id=#{playerId}")
     Player findPlayerById(int playerId);
 
     /** 将新player插入到数据库中
@@ -23,4 +23,7 @@ public interface PlayerMapper {
      * @return Player的id
      */
     int insertPlayer(Player player);
+
+    int updatePlayer(Player player);
+
 }

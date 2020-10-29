@@ -1,6 +1,6 @@
 package com.clx.doudiz;
 
-import com.clx.doudiz.controller.MatchController;
+import com.clx.doudiz.controller.RoomController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ public class MatchTests {
 
     @Before
     public void setUp() throws Exception{
-        mvc = MockMvcBuilders.standaloneSetup(new MatchController()).build();
+        mvc = MockMvcBuilders.standaloneSetup(new RoomController()).build();
     }
 
     @Test
