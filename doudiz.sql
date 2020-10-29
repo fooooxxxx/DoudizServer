@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 29/10/2020 22:48:55
+ Date: 29/10/2020 23:13:04
 */
 
 SET NAMES utf8mb4;
@@ -35,6 +35,11 @@ CREATE TABLE `battle`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of battle
+-- ----------------------------
+INSERT INTO `battle` VALUES (67229, '[1, 2, 10]', '[\"2_15,4_13,1_6,3_15,2_4,1_5,3_13,4_10,4_9,1_4,3_6,1_8,1_7,2_3,1_10,2_13,2_12\", \"1_15,2_5,3_14,3_11,4_8,4_11,4_15,3_10,3_8,3_5,3_9,3_7,4_5,2_9,1_9,3_4,2_11\", \"2_6,4_14,4_4,4_12,4_7,4_3,2_7,4_6,2_8,1_11,2_10,1_12,3_3,1_14,1_13,1_3,3_12\"]', '[\"\", \"\", \"\"]', 15, 0, '5_17,5_16,2_14', '[603, 603, 603]', '600');
+
+-- ----------------------------
 -- Table structure for player
 -- ----------------------------
 DROP TABLE IF EXISTS `player`;
@@ -44,6 +49,17 @@ CREATE TABLE `player`  (
   `enter_room_id` int NULL DEFAULT 0,
   PRIMARY KEY (`player_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of player
+-- ----------------------------
+INSERT INTO `player` VALUES (1, '阿伟', 67229);
+INSERT INTO `player` VALUES (2, '壮汉', 67229);
+INSERT INTO `player` VALUES (10, '大张伟', 67229);
+INSERT INTO `player` VALUES (17, '安卓测试', NULL);
+INSERT INTO `player` VALUES (18, '安卓测试', NULL);
+INSERT INTO `player` VALUES (19, '安卓测试', NULL);
+INSERT INTO `player` VALUES (20, '安卓测试', 13597);
 
 -- ----------------------------
 -- Table structure for room
@@ -60,5 +76,11 @@ CREATE TABLE `room`  (
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_for_battle`(`battle_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of room
+-- ----------------------------
+INSERT INTO `room` VALUES (13597, 20, 0, 0, NULL, 0, 'NOT_FULL');
+INSERT INTO `room` VALUES (67229, 1, 2, 10, NULL, 0, 'FULL_AND_READY');
 
 SET FOREIGN_KEY_CHECKS = 1;
