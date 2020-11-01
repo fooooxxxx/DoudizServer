@@ -89,4 +89,11 @@ public class Battle implements Serializable {
     public void setBattleStatus(int battleStatus) {
         this.battleStatus = battleStatus;
     }
+
+    /** 倒计时自减
+     * @return 返回自减后的倒计时值
+     */
+    public int autoReduceCountDown(){
+        return --countDown;
+    }
 }

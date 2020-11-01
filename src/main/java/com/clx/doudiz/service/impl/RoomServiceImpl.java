@@ -92,14 +92,14 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public Status checkRoomStatus(int roomId) {
         Room room = roomMapper.selectRoomById(roomId);
-        if(room==null) return Status.NOT_EXIST;
+        if(room==null) return Status.NOT_EXIST;//房间判空
         Status resStatus = Status.UNKNOWN;
         judgeRoomStatus(room);//先判断room的状态
         switch(room.getRoomStatus()){
             case EMPTY://房间为空,进行清理
                 roomMapper.deleteRoomById(roomId);
                 resStatus = Status.NOT_EXIST;//清理后不在存在
-                break;
+                return resStatus;//提前return
             case FULL_AND_READY://房间已满,开始游戏
                 battleService.createBattle(room);//初始化战局
                 /*
@@ -109,9 +109,11 @@ public class RoomServiceImpl implements RoomService {
                 * */
                 resStatus = Status.PLAYING;
                 //模式设置为PLAYING
-                roomMapper.updateRoom(room);
                 break;
         }
+        room.setRoomStatus(resStatus);
+        roomMapper.updateRoom(room);
+
         return resStatus;
     }
 
@@ -129,6 +131,6 @@ public class RoomServiceImpl implements RoomService {
             room.setRoomStatus(Status.FULL_AND_READY);
         }
         roomMapper.updateRoom(room);
-        return null;
+        return room.getRoomStatus();
     }
 }
