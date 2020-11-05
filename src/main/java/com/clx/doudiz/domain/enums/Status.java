@@ -1,6 +1,7 @@
 package com.clx.doudiz.domain.enums;
 
 public enum Status {
+    /*Room使用的状态码*/
     /**未知状态,不允许使用*/
     UNKNOWN(0),
     /**有玩家但是没有满员*/
@@ -21,10 +22,18 @@ public enum Status {
     ENTER_SUCCEED(200),
     /** 离开成功 */
     LEAVE_SUCCEED(202),
+    /**出牌成功*/
+    PUSH_SUCCEED(203),
+    /** 成功弃牌 */
+    ABANDON_SUCCEED(204),
+    /** 获得战局详情成功 */
+    GET_BATTLE_SUCCEED(204),
     /**该房间已满*/
     FULL(401),
     /**房间或用户或战局不存在*/
     NOT_EXIST(404),
+    /**传递json缺失或者错误*/
+    JSON_ERROR(411),
     /**未知错误*/
     UNKNOWN_ERROR(444);
 

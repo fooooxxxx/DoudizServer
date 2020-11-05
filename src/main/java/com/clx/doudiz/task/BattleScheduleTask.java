@@ -34,7 +34,7 @@ public class BattleScheduleTask {
      * 用于清除空房间,为人满的房间创建Battle
      */
     @Async
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 6000)
     public void autoCheckBattle(){
 //        System.out.println("自动检查房间状态 : " + LocalDateTime.now().toLocalTime() + "\r\n线程 : " + Thread.currentThread().getName());
 //        System.out.print("自动检查房间状态 : " + LocalDateTime.now().toLocalTime() );
@@ -46,7 +46,7 @@ public class BattleScheduleTask {
     }
 
     /**
-     * 减少倒计时,并且处理各种清空
+     * 减少倒计时,并且处理各种倒计时归零清空
      */
     @Async
     @Scheduled(fixedDelay = 1000)
