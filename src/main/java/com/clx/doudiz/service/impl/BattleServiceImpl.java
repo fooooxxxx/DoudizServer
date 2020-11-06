@@ -34,6 +34,7 @@ public class BattleServiceImpl implements BattleService {
     public Status createBattle(Room room) {
         battleMapper.deleteBattleById(room.getRoomId());//首先删除之前的battle
         battleMapper.insertBattle(initBattle(room));
+        room.setBattleId(room.getRoomId());//为room设置battleId
         return null;
     }
 
