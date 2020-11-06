@@ -53,6 +53,11 @@ public class BattleController {
         return resJson.toJSONString();
     }
 
+    /** 出牌
+     * @param jsonData {"battleId":int,"playerId":int,"pushCardStr":String}
+     *                 pushCardStr 为出牌牌组的String
+     * @return 返回status和"statusCode
+     */
     @RequestMapping(value = "/battle/card/push", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String pushCard(@RequestBody JSONObject jsonData) {
         JSONObject resJson = new JSONObject();
@@ -69,12 +74,12 @@ public class BattleController {
             }
         } else {
             resJson.put("status", false);//传递json参数错误
-            resJson.put("statusCode", Status.JSON_ERROR);
+            resJson.put("statusCode", Status.JSON_ERROR.getCode());
         }
         return resJson.toJSONString();
     }
 
-    /** 重置battle
+    /** 重置battle,测试用方法
      * @param jsonData {"roomId":int}
      * @return 必定返回true
      */
