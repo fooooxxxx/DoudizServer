@@ -113,7 +113,7 @@ public class RoomServiceImpl implements RoomService {
             case PLAYING:
                 return Status.PLAYING;
             default:
-                battleService.createBattle(room);
+                break;
 
         }
         room.setRoomStatus(resStatus);
