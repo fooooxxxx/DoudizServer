@@ -9,4 +9,5 @@ public interface PlayerService {
 
     int createPlayer(String playerName);
 
+    boolean checkPlayerExist(int playerId);
 }

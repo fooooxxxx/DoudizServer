@@ -2,6 +2,7 @@ package com.clx.doudiz.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.clx.doudiz.domain.Player;
+import com.clx.doudiz.domain.enums.Status;
 import com.clx.doudiz.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,24 @@ public class PlayerController {
         resJson.put("playerId",playerService.createPlayer(newPlayerName));
         return resJson.toJSONString();
     }
+
+    @RequestMapping(value = "/player/exist",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    public String checkPlayerExist(@RequestBody JSONObject jsonData){
+        JSONObject resJson = new JSONObject();
+        if(!jsonData.containsKey("playerId")){
+            resJson.put("status",false);
+            resJson.put("statusCode", Status.JSON_ERROR.getCode());
+        }else {
+            if (playerService.checkPlayerExist(jsonData.getInteger("playerId"))) {
+                resJson.put("status",true);
+            }else{
+                resJson.put("status",false);
+                resJson.put("statusCode",Status.NOT_EXIST.getCode());
+            }
+        }
+        return resJson.toJSONString();
+    }
+
 
     @RequestMapping("/")
     public String index(){

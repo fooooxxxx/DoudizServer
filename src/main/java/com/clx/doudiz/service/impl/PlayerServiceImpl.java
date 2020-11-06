@@ -24,4 +24,10 @@ public class PlayerServiceImpl implements PlayerService {
         playerMapper.insertPlayer(newPlayer);
         return newPlayer.getPlayerId();
     }
+
+    @Override
+    public boolean checkPlayerExist(int playerId) {
+        Player player = playerMapper.findPlayerById(playerId);
+        return (player != null);
+    }
 }
