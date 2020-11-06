@@ -31,6 +31,7 @@ public class RoomController {
         Status roomStatus = matchService.enterRoomById(roomId, playerId);
         resJson.put("statusCode", roomStatus.getCode());//将状态码写入json
         if (roomStatus == Status.ENTER_SUCCEED) {//进入成功
+            resJson.put("roomId",roomId);
             resJson.put("status", true);
         } else {
             resJson.put("status", false);
