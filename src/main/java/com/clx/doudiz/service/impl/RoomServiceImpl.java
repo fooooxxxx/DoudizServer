@@ -52,7 +52,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public Status enterRoomById(int roomId, int playerId) {
         Room enterRoom = roomMapper.selectRoomById(roomId);
-        if (enterRoom.getRoomId() == 0) {//该roomId没有对应的Room,即房间不存在
+        if (enterRoom == null) {//该roomId没有对应的Room,即房间不存在
             return Status.NOT_EXIST;
         } else if (enterRoom.getRoomStatus() != Status.NOT_FULL) {//该房间已经满了,或者已经开始了
             return Status.PLAYING;
