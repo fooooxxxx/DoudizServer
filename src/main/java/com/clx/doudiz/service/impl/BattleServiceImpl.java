@@ -113,14 +113,14 @@ public class BattleServiceImpl implements BattleService {
                 jsonResult.put("countDown",battle.getCountDown());
                 jsonResult.put("identity",battle.getIdentity());
                 jsonResult.put("status",true);
-                jsonResult.put("statusCode",Status.GET_BATTLE_SUCCEED);
+                jsonResult.put("statusCode",Status.GET_BATTLE_SUCCEED.getCode());
                 return jsonResult;
             }
 
         }
         //如果battle不存在
         jsonResult.put("status", false);
-        jsonResult.put("statusCode", Status.NOT_EXIST);
+        jsonResult.put("statusCode", Status.NOT_EXIST.getCode());
         return jsonResult;
     }
 
