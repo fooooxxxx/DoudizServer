@@ -92,6 +92,13 @@ public interface BattleService {
      */
     int getPlayerPosition(Battle battle,int playerId);
 
+    /** 删除对应的Battle,并且从room中删去BattleId,将Room状态设置为 未知
+     * @param room 需要重置的房间
+     * @return 如果人依然为满,则返回true,否则返回false
+     */
+    void resetBattle(Room room);
+
+
     String getExtraCard(int battleId);
 
 //    /** 尝试进行通过下标出牌,出牌成功后检查是否有玩家胜出

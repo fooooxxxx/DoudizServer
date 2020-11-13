@@ -189,13 +189,23 @@ public class BattleServiceImpl implements BattleService {
             if (countDown <= 0) {
                 abandonPushCard(battle,nowPlayer);//自动放弃出牌
             }
-        } else if (battleStatus == STAGE_PEASANT_WIN) {
-
-        } else if (battleStatus == STAGE_LANDLORD_WIN) {
-
+        } else if (battleStatus == STAGE_PEASANT_WIN || battleStatus == STAGE_LANDLORD_WIN) {
+            if(countDown <= -10){
+                //重置游戏
+                resetBattle(roomMapper.selectRoomById(battle.getBattleId()));
+            }
         }
         battleMapper.updateBattle(battle);//更新battle到数据库
         return true;
+    }
+
+    @Override
+    public void resetBattle(Room room) {
+        if(room==null) return;
+        battleMapper.deleteBattleById(room.getRoomId());
+        room.setRoomStatus(Status.UNKNOWN);
+        room.setBattleId(0);
+        roomMapper.updateRoom(room);
     }
 
     Battle initBattle(Room room) {
