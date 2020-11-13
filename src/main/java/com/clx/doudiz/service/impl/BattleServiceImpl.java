@@ -95,6 +95,7 @@ public class BattleServiceImpl implements BattleService {
             battle.setBattleStatus(STAGE_FIRST_CARD);
         }
         battle.setCurrentPlayer(nextPlayer(playerPosition));//出牌者设置为下家
+        showCardList.set(battle.getCurrentPlayer(),"");
         battle.setCountDown(NORMAL_COUNTDOWN);
         battleMapper.updateBattle(battle);//数据更新到数据库
         return Status.ABANDON_SUCCEED;
@@ -344,10 +345,13 @@ public class BattleServiceImpl implements BattleService {
         handCardArray.set(playerPosition,Card.convertToString(originCardList));
         //切换出牌者为下家
         battle.setCurrentPlayer(PublicTools.playerCyclic(playerPosition));
-        battle.setCountDown(NORMAL_COUNTDOWN);//重置倒计时
+        //重置倒计时
+        battle.setCountDown(NORMAL_COUNTDOWN);
         battle.setBattleStatus(STAGE_FOLLOW_CARD);
+        //清空下家的展示区
         JSONArray showCards = battle.getPlayerShowCards();
-        showCards.set(battle.getCurrentPlayer(),"");//清空下家的展示区
+        showCards.set(battle.getCurrentPlayer(),"");
+        checkWinner(battle);
         //更新battle
         battleMapper.updateBattle(battle);
         return Status.PUSH_SUCCEED;
@@ -370,6 +374,9 @@ public class BattleServiceImpl implements BattleService {
         handCardArray.set(playerPosition,Card.convertToString(originCardList));
         //切换出牌者为下家
         battle.setCurrentPlayer(PublicTools.playerCyclic(playerPosition));
+        //清空下家展示区
+        JSONArray showCards = battle.getPlayerShowCards();
+        showCards.set(battle.getCurrentPlayer(),"");
         //重置倒计时
         battle.setCountDown(NORMAL_COUNTDOWN);
         battleMapper.updateBattle(battle);//更新battle
