@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 29/10/2020 23:13:04
+ Date: 13/11/2020 16:43:09
 */
 
 SET NAMES utf8mb4;
@@ -37,7 +37,8 @@ CREATE TABLE `battle`  (
 -- ----------------------------
 -- Records of battle
 -- ----------------------------
-INSERT INTO `battle` VALUES (67229, '[1, 2, 10]', '[\"2_15,4_13,1_6,3_15,2_4,1_5,3_13,4_10,4_9,1_4,3_6,1_8,1_7,2_3,1_10,2_13,2_12\", \"1_15,2_5,3_14,3_11,4_8,4_11,4_15,3_10,3_8,3_5,3_9,3_7,4_5,2_9,1_9,3_4,2_11\", \"2_6,4_14,4_4,4_12,4_7,4_3,2_7,4_6,2_8,1_11,2_10,1_12,3_3,1_14,1_13,1_3,3_12\"]', '[\"\", \"\", \"\"]', 15, 0, '5_17,5_16,2_14', '[603, 603, 603]', '600');
+INSERT INTO `battle` VALUES (24473, '[21, 17, 18]', '[\"\", \"2_9,1_7,1_14,2_8,3_5,2_4,3_7,1_15,1_10,4_6,1_3,2_5,4_10,1_12,1_8,3_6,1_11\", \"1_9,4_7,4_12,4_8,2_6,4_3,3_14,2_12,4_5,3_15,3_9,1_13,3_11,2_15,4_11,4_15,4_14,1_6\"]', '[\"\", \"\", \"\"]', -228, 0, '4_15,4_14,1_6', '[680, 680, 690]', '788');
+INSERT INTO `battle` VALUES (67229, '[1, 2, 10]', '[\"13_4,10_4,15_2,6_3,6_1,5_4,7_1,14_3,7_4,11_3,4_1,9_2,3_3,8_1,13_1,6_2,17_5,16_5,5_3\", \"4_15,4_4,2_8,2_14,1_3,3_9,2_5,4_8,2_12,4_12,2_3,1_10,1_14,1_15,2_7,2_13,3_15\", \"\"]', '[\"\", \"\", \"9_4\"]', -43546, 0, '5_17,5_16,3_5', '[690, 680, 680]', '788');
 
 -- ----------------------------
 -- Table structure for player
@@ -48,7 +49,7 @@ CREATE TABLE `player`  (
   `player_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   `enter_room_id` int NULL DEFAULT 0,
   PRIMARY KEY (`player_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of player
@@ -59,7 +60,7 @@ INSERT INTO `player` VALUES (10, '大张伟', 67229);
 INSERT INTO `player` VALUES (17, '安卓测试', NULL);
 INSERT INTO `player` VALUES (18, '安卓测试', NULL);
 INSERT INTO `player` VALUES (19, '安卓测试', NULL);
-INSERT INTO `player` VALUES (20, '安卓测试', 13597);
+INSERT INTO `player` VALUES (21, '安卓测试', 0);
 
 -- ----------------------------
 -- Table structure for room
@@ -80,7 +81,7 @@ CREATE TABLE `room`  (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES (13597, 20, 0, 0, NULL, 0, 'NOT_FULL');
-INSERT INTO `room` VALUES (67229, 1, 2, 10, NULL, 0, 'FULL_AND_READY');
+INSERT INTO `room` VALUES (24473, 0, 17, 18, NULL, 24473, 'NOT_FULL');
+INSERT INTO `room` VALUES (67229, 1, 2, 10, NULL, 0, 'PLAYING');
 
 SET FOREIGN_KEY_CHECKS = 1;
