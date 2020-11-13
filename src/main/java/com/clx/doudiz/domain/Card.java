@@ -13,7 +13,7 @@ public class Card implements Comparable<Card>,Cloneable{
 
     private int cardValue;//牌值,从三开始递增
 
-    public Card(int cardValue, int cardType) {
+    public Card(int cardType,int cardValue ) {
         this.cardValue = cardValue;
         this.cardType = cardType;
     }
