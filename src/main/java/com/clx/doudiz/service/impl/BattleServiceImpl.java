@@ -106,7 +106,7 @@ public class BattleServiceImpl implements BattleService {
             if (nowPlayer != -1) {//如果用户存在
                 //手牌只获取自己的
                 jsonResult.put("handCards",battle.getPlayerHandCards().get(nowPlayer));
-                jsonResult.put("showCards",battle.getPlayerShowCards().get(0));
+                jsonResult.put("showCards",battle.getPlayerShowCards());
                 jsonResult.put("playerList",battle.getPlayerList());
                 jsonResult.put("currentPlayer",battle.getCurrentPlayer());
                 jsonResult.put("battleStatus",battle.getBattleStatus());
