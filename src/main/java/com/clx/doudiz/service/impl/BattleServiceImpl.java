@@ -101,6 +101,13 @@ public class BattleServiceImpl implements BattleService {
     }
 
     @Override
+    public String getExtraCard(int battleId) {
+        Battle battle = battleMapper.selectBattleById(battleId);
+        if(battle == null) return "";
+        return battle.getExtraCards();
+    }
+
+    @Override
     public JSONObject getBattleDetails(int playerId, int roomId) {
         JSONObject jsonResult = new JSONObject();
         Battle battle = battleMapper.selectBattleById(roomId);
@@ -116,6 +123,7 @@ public class BattleServiceImpl implements BattleService {
                 jsonResult.put("battleStatus",battle.getBattleStatus());
                 jsonResult.put("countdown",battle.getCountDown());
                 jsonResult.put("identity",battle.getIdentity());
+                jsonResult.put("extraCardStr",battle.getExtraCards());
                 jsonResult.put("status",true);
                 jsonResult.put("statusCode",Status.GET_BATTLE_SUCCEED.getCode());
                 return jsonResult;

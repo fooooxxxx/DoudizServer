@@ -79,6 +79,14 @@ public class BattleController {
         return resJson.toJSONString();
     }
 
+    @RequestMapping(value = "/battle/extra",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String getExtraCard(@RequestBody JSONObject jsonData){
+        JSONObject resJson = new JSONObject();
+        resJson.put("extraCardStr",battleService.getExtraCard(jsonData.getInteger("battleId")));
+        resJson.put("status",true);
+        return resJson.toJSONString();
+    }
+
     /** 重置battle,测试用方法
      * @param jsonData {"roomId":int}
      * @return 必定返回true

@@ -92,6 +92,8 @@ public interface BattleService {
      */
     int getPlayerPosition(Battle battle,int playerId);
 
+    String getExtraCard(int battleId);
+
 //    /** 尝试进行通过下标出牌,出牌成功后检查是否有玩家胜出
 //     * @param pushCardIndex 所出牌的下标
 //     * @param battle 牌局
