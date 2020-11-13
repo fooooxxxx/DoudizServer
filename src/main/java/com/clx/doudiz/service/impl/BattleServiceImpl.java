@@ -88,6 +88,10 @@ public class BattleServiceImpl implements BattleService {
         showCardList.set(playerPosition, "");//设置为不出牌状态
         if (showCardList.get(lastPlayer(playerPosition)).equals("")) {
             //如果上家也是不出牌,则进入STAGE_FIRST_CARD,让下家出牌
+            //清空showCardList所有卡牌
+            showCardList.set(0,"");
+            showCardList.set(1,"");
+            showCardList.set(2,"");
             battle.setBattleStatus(STAGE_FIRST_CARD);
         }
         battle.setCurrentPlayer(nextPlayer(playerPosition));//出牌者设置为下家
@@ -333,6 +337,7 @@ public class BattleServiceImpl implements BattleService {
         //切换出牌者为下家
         battle.setCurrentPlayer(PublicTools.playerCyclic(playerPosition));
         battle.setCountDown(NORMAL_COUNTDOWN);//重置倒计时
+        battle.setBattleStatus(STAGE_FOLLOW_CARD);
         //更新battle
         battleMapper.updateBattle(battle);
         return Status.PUSH_SUCCEED;
