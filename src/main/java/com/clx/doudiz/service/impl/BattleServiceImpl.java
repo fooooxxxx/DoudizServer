@@ -338,6 +338,8 @@ public class BattleServiceImpl implements BattleService {
         battle.setCurrentPlayer(PublicTools.playerCyclic(playerPosition));
         battle.setCountDown(NORMAL_COUNTDOWN);//重置倒计时
         battle.setBattleStatus(STAGE_FOLLOW_CARD);
+        JSONArray showCards = battle.getPlayerShowCards();
+        showCards.set(battle.getCurrentPlayer(),"");//清空下家的展示区
         //更新battle
         battleMapper.updateBattle(battle);
         return Status.PUSH_SUCCEED;
