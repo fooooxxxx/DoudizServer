@@ -1,5 +1,8 @@
 package com.clx.doudiz.domain;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +56,21 @@ public class Card implements Comparable<Card>,Cloneable{
             }
         }
         return cardList;
+    }
+
+    /** 获得各个玩家的手牌数量
+     * @param handCards 手牌
+     * @return 手牌数量,以JSONArray形式返回
+     */
+    public static JSONArray getCardNums(JSONArray handCards){
+        JSONArray cardNums = new JSONArray();
+        cardNums.add(0);
+        cardNums.add(0);
+        cardNums.add(0);
+        for(int i = 0;i < handCards.size();i++){
+            cardNums.set(i,handCards.getString(i).split(",").length);
+        }
+        return cardNums;
     }
 
     /** 将CardList转换成字符串,Card之间使用","拼接

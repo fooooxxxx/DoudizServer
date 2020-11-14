@@ -116,8 +116,9 @@ public class BattleServiceImpl implements BattleService {
         if (battle != null) {//如果battle存在
             int nowPlayer = battle.getPlayerList().indexOf(playerId);
             if (nowPlayer != -1) {//如果用户存在
+                JSONArray handCards = battle.getPlayerHandCards();
                 //手牌只获取自己的
-                jsonResult.put("handCards",battle.getPlayerHandCards().get(nowPlayer));
+                jsonResult.put("handCards",handCards.get(nowPlayer));
                 jsonResult.put("showCards",battle.getPlayerShowCards());
                 jsonResult.put("playerList",battle.getPlayerList());
                 jsonResult.put("currentPlayer",battle.getCurrentPlayer());
@@ -125,6 +126,7 @@ public class BattleServiceImpl implements BattleService {
                 jsonResult.put("countdown",battle.getCountDown());
                 jsonResult.put("identity",battle.getIdentity());
                 jsonResult.put("extraCardStr",battle.getExtraCards());
+                jsonResult.put("cardNum",Card.getCardNums(handCards));//剩余手牌数量
                 jsonResult.put("status",true);
                 jsonResult.put("statusCode",Status.GET_BATTLE_SUCCEED.getCode());
                 return jsonResult;
